@@ -1,5 +1,4 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
 class Settings(BaseSettings):
     FRONTEND_URL: str = "http://localhost:5173"
     DATA_DIR: str = ""  # kosong = folder backend/data
