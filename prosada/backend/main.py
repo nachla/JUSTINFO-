@@ -5,7 +5,7 @@ from routers import ai, data
 
 app = FastAPI(
     title="PROSADA API",
-    description="Backend API Prosada: analitik inovasi daerah Jawa Timur (clustering, Knowledge Graph, Graph RAG)",
+    description="Backend API Prosada: analitik inovasi daerah Jawa Timur (clustering, Knowledge Graph, Explainable AI Chatbot)",
     version="1.0.0",
 )
 

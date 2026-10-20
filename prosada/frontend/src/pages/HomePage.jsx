@@ -22,7 +22,7 @@ export default function HomePage() {
         </span>
         <h1 className="mb-1 mt-2 text-2xl font-extrabold">Dashboard Inovasi Daerah</h1>
         <p className="text-sm text-[#c3d6e4]">
-          Clustering, Knowledge Graph, dan Graph RAG untuk inovasi pemerintah daerah di Jawa Timur.
+          Clustering, Knowledge Graph, dan Explainable AI untuk inovasi pemerintah daerah di Jawa Timur.
         </p>
       </div>
 
