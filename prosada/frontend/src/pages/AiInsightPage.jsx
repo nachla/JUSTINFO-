@@ -467,7 +467,7 @@ export default function AiInsightPage() {
             <div className="hidden sm:flex items-center gap-2 rounded-xl border border-[#d6e5ef] bg-white px-3 py-1.5 text-xs text-[#2b4c68] shadow-xs">
               <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="font-semibold">
-                {status.model ? `Model: ${status.model.split("/").pop()}` : "Groq API Online"}
+                {status.model ? `Model: Groq · ${status.model.split("/").pop()}` : "Groq API Online"}
               </span>
               <span className="text-[#879cb0]">|</span>
               <span className="text-[11px] text-[#557088]">

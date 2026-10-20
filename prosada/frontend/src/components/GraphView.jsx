@@ -29,9 +29,19 @@ export default function GraphView({ profil }) {
             </g>
           );
         })}
-        <circle cx={cx} cy={cy} r="38" fill="#113d64" />
-        <text x={cx} y={cy - 2} textAnchor="middle" fontSize="11" fontWeight="700" fill="#fff">{kata[0]}</text>
-        <text x={cx} y={cy + 12} textAnchor="middle" fontSize="11" fill="#fff">{kata.slice(1).join(" ")}</text>
+        <circle cx={cx} cy={cy} r="40" fill="#113d64" />
+        {profil.nama.includes("Provinsi") ? (
+          <>
+            <text x={cx} y={cy - 7} textAnchor="middle" fontSize="10" fontWeight="700" fill="#fff">Inovasi</text>
+            <text x={cx} y={cy + 5} textAnchor="middle" fontSize="9" fill="#7dd3fc">Prov. Jawa Timur</text>
+            <text x={cx} y={cy + 17} textAnchor="middle" fontSize="10" fontWeight="700" fill="#fff">{profil.nama.split(" ").pop()}</text>
+          </>
+        ) : (
+          <>
+            <text x={cx} y={cy - 2} textAnchor="middle" fontSize="11" fontWeight="700" fill="#fff">{kata[0]}</text>
+            <text x={cx} y={cy + 12} textAnchor="middle" fontSize="11" fill="#fff">{kata.slice(1).join(" ")}</text>
+          </>
+        )}
         {Object.entries(COLOR).map(([rel, c], j) => (
           <g key={rel}>
             <circle cx="14" cy={16 + j * 16} r="5" fill={c} />

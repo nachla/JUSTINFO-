@@ -11,6 +11,14 @@ import { TK_COLOR } from "../lib/format";
 
 const toItems = (arr) => arr.map((x) => ({ label: x.nama, value: x.n }));
 
+const formatNamaProfil = (nama) => {
+  if (!nama) return "";
+  if (nama.includes("Provinsi") && !nama.includes("Jawa Timur")) {
+    return nama.replace("Provinsi", "Provinsi Jawa Timur");
+  }
+  return nama;
+};
+
 export default function KnowledgeGraphPage() {
   const kg = useFetch(getKg);
   const profil = useFetch(getProfil);
@@ -73,7 +81,7 @@ export default function KnowledgeGraphPage() {
                   >
                     {list.map((p, k) => (
                       <option key={p.id} value={k}>
-                        {p.nama} ({p.tingkat}) — {p.id}
+                        {formatNamaProfil(p.nama)} ({p.tingkat}) — {p.id}
                       </option>
                     ))}
                   </select>
@@ -90,7 +98,7 @@ export default function KnowledgeGraphPage() {
                       <div className="flex items-center gap-2">
                         <MapPin className="text-[#0e8fa8]" size={18} />
                         <h3 className="text-sm font-bold text-[#113d64]">
-                          Wilayah Terhubung ke {selected.nama}
+                          Wilayah Terhubung ke {formatNamaProfil(selected.nama)}
                         </h3>
                         <span
                           className="rounded-full px-2.5 py-0.5 text-xs font-bold text-white"

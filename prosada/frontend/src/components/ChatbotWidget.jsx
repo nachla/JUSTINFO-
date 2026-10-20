@@ -98,7 +98,7 @@ export default function ChatbotWidget() {
                 <Bot size={16} />
               </div>
               <div>
-                <h4 className="text-sm font-bold leading-tight">PROSADA AI Chat</h4>
+                <h4 className="text-sm font-bold leading-tight">JUSTINFO AI Chat</h4>
                 <p className="text-[10px] text-emerald-200">Knowledge Graph & XAI Connected</p>
               </div>
             </div>
@@ -176,7 +176,7 @@ export default function ChatbotWidget() {
             {loading && (
               <div className="flex items-center gap-2 text-xs text-[#627d92]">
                 <Bot size={14} className="text-[#1a7a6e] animate-spin" />
-                <span className="text-[11px]">PROSADA AI sedang menganalisis Knowledge Graph...</span>
+                <span className="text-[11px]">JUSTINFO AI sedang menganalisis Knowledge Graph...</span>
               </div>
             )}
             <div ref={chatBottomRef} />

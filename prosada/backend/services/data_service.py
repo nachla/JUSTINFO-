@@ -105,6 +105,8 @@ def get_profil() -> list:
         ringkas = (f"{sub.daerah.nunique()} wilayah · {len(sub)} inovasi" if eko
                    else f"{len(sub)} inovasi provinsi")
         nama = r["nama_profil"].replace("Profil ", "").replace("Karakteristik ", "")
+        if "Provinsi" in nama and "Jawa Timur" not in nama:
+            nama = nama.replace("Provinsi", "Provinsi Jawa Timur")
 
         target_edges = eko_edges[eko_edges.target_id == pid]
         d_names = sorted([daerah_pendek(daerah_nodes.get(sid, sid)) for sid in target_edges["source_id"] if sid in daerah_nodes])

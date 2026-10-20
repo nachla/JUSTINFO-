@@ -138,7 +138,7 @@ def build_kg_context(pertanyaan: str = "") -> tuple[str, list[str]]:
 
 
 def _system_prompt(kg_context: str) -> str:
-    return f"""Kamu adalah PROSADA AI Assistant, asisten analitik cerdas yang terhubung LANGSUNG ke Knowledge Graph Inovasi Daerah Jawa Timur (BRIDA Provinsi Jawa Timur).
+    return f"""Kamu adalah JUSTINFO AI Assistant, asisten analitik cerdas yang terhubung LANGSUNG ke Knowledge Graph Inovasi Daerah Jawa Timur (BRIDA Provinsi Jawa Timur).
 
 Sistem ini TIDAK menggunakan Graph RAG berbasis aturan kaku, melainkan menggunakan API langsung dengan akses utuh ke fakta data Knowledge Graph Jawa Timur.
 Tugasmu adalah menjawab pertanyaan pengguna secara komprehensif, informatif, ramah, dan berbasis data faktual yang akurat.
