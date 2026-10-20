@@ -137,11 +137,10 @@ export default function ChatbotWidget() {
                   </div>
                 )}
                 <div
-                  className={`max-w-[85%] rounded-xl px-3 py-2 text-xs leading-relaxed shadow-2xs ${
-                    m.role === "user"
+                  className={`max-w-[85%] rounded-xl px-3 py-2 text-xs leading-relaxed shadow-2xs ${m.role === "user"
                       ? "bg-[#113d64] text-white rounded-tr-none"
                       : "bg-white border border-[#e2edf3] text-[#243746] rounded-tl-none"
-                  }`}
+                    }`}
                 >
                   <p className="whitespace-pre-wrap">{m.content}</p>
 
@@ -220,7 +219,7 @@ export default function ChatbotWidget() {
           </span>
         </div>
         <span className="hidden font-semibold text-xs tracking-wide sm:inline pr-1">
-          Tanya AI Jatim
+          Tanya JUSTINFO AI
         </span>
       </button>
     </div>
