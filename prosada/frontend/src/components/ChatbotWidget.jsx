@@ -36,16 +36,16 @@ export default function ChatbotWidget() {
   const [expandedXaiId, setExpandedXaiId] = useState(null);
   const chatBottomRef = useRef(null);
 
-  // Jangan tampilkan floating widget jika pengguna sedang di halaman penuh /ai-insight
-  if (location.pathname === "/ai-insight") {
-    return null;
-  }
-
   useEffect(() => {
     if (isOpen) {
       chatBottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages, isOpen, loading]);
+
+  // Jangan tampilkan floating widget jika pengguna sedang di halaman penuh /ai-insight
+  if (location.pathname === "/ai-insight") {
+    return null;
+  }
 
   async function handleSend(e) {
     e?.preventDefault();

@@ -90,9 +90,12 @@ def get_dominan(pid: str) -> dict:
 
 @lru_cache(maxsize=1)
 def get_profil() -> list:
-    nodes, inv = load_nodes(), load_inovasi()
+    nodes, edges, inv = load_nodes(), load_edges(), load_inovasi()
     hasil = []
     profil = nodes[nodes.type.isin(["ProfilEkosistemInovasi", "ProfilKarakteristikInovasi"])]
+    eko_edges = edges[edges.relation == "TERMASUK_PROFIL_EKOSISTEM"]
+    daerah_nodes = nodes[nodes.type == "Daerah"].set_index("node_id")["nama_daerah"].to_dict()
+
     for r in profil.to_dict("records"):
         pid = r["node_id"]
         cid = int(r["source_cluster_id"])
@@ -102,8 +105,14 @@ def get_profil() -> list:
         ringkas = (f"{sub.daerah.nunique()} wilayah · {len(sub)} inovasi" if eko
                    else f"{len(sub)} inovasi provinsi")
         nama = r["nama_profil"].replace("Profil ", "").replace("Karakteristik ", "")
+
+        target_edges = eko_edges[eko_edges.target_id == pid]
+        d_names = sorted([daerah_pendek(daerah_nodes.get(sid, sid)) for sid in target_edges["source_id"] if sid in daerah_nodes])
+        if not d_names and not eko:
+            d_names = ["Pemerintah Provinsi Jawa Timur"]
+
         hasil.append({"id": pid, "nama": nama, "tingkat": r["tingkat_kematangan"],
-                      "ringkas": ringkas, "n_inovasi": len(sub), **get_dominan(pid)})
+                      "ringkas": ringkas, "n_inovasi": len(sub), "wilayah": d_names, **get_dominan(pid)})
     return hasil
 
 

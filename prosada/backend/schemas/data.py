@@ -48,6 +48,7 @@ class ProfilItem(BaseModel):
     bentuk: list[Dominan] = []
     urusan: list[Dominan] = []
     tahapan: list[Dominan] = []
+    wilayah: list[str] = []
 
 
 class KgResponse(BaseModel):

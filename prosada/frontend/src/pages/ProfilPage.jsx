@@ -27,7 +27,8 @@ export default function ProfilPage() {
       />
       <Async state={state}>
         {(profil) => {
-          const p = profil[aktif];
+          const p = profil[aktif] || profil[0];
+          if (!p) return null;
           return (
             <>
               <div className="mb-3 flex flex-wrap gap-1.5">

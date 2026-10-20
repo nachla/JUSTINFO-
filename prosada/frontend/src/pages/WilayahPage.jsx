@@ -43,7 +43,7 @@ function Isi({ data }) {
         ))}
       </div>
 
-      <WilayahMap data={rows} max={data[0].n} />
+      <WilayahMap data={rows} max={data?.[0]?.n || 1} />
 
       <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#6b7c8d]">
         {Object.entries(TK_COLOR).map(([tk, c]) => (
