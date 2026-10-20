@@ -20,14 +20,14 @@ Repository ini terbagi secara tegas menjadi dua direktori yang memiliki peran, a
 
 ```
 JUSTINFO-/
-├── 📁 Prosada-Final/    # 1. DIREKTORI RISET & DATA SCIENCE PIPELINE
+├── Prosada-Final/    # 1. DIREKTORI RISET & DATA SCIENCE PIPELINE
 │   ├── ... (Notebooks, Dataset Excel Mentah, Export GraphML & CSV)
-│   └── 📄 README.md     # Panduan teknis riset data science & clustering
+│   └── README.md     # Panduan teknis riset data science & clustering
 │
-├── 📁 prosada/          # 2. DIREKTORI APLIKASI WEB PRODUKSI (SIAP DEPLOY)
+├── prosada/          # 2. DIREKTORI APLIKASI WEB PRODUKSI (SIAP DEPLOY)
 │   ├── backend/         # REST API FastAPI + Knowledge Graph Data Service + XAI
 │   ├── frontend/        # React 19 + Vite Dashboard + Peta Wilayah Leaflet
-│   └── 📄 README.md     # Panduan instalasi lokal, API, & deployment cloud
+│   └── README.md     # Panduan instalasi lokal, API, & deployment cloud
 │
 ├── .gitignore           # Aturan pengabaian berkas rahasia & build
 └── README.md            # Dokumentasi umum repositori (berkas ini)
