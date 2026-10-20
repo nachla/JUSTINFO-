@@ -14,7 +14,7 @@ Repository ini memadukan riset **Data Science**, pemodelan **Machine Learning (C
 
 ---
 
-## 🧭 Struktur Repository: Dua Bagian Utama
+## Struktur Repository: Dua Bagian Utama
 
 Repository ini terbagi secara tegas menjadi dua direktori yang memiliki peran, alur kerja, dan dokumentasi masing-masing:
 
@@ -35,7 +35,7 @@ JUSTINFO-/
 
 ---
 
-## 🔍 Penjelasan Kedua Folder
+## Penjelasan Kedua Folder
 
 ### 1. `Prosada-Final/` — Riset, Eksperimen & Data Science Pipeline
 Folder ini merupakan ruang kerja **analis data / data scientist** untuk memproses data mentah hingga menjadi Knowledge Graph terstruktur.
@@ -47,7 +47,7 @@ Folder ini merupakan ruang kerja **analis data / data scientist** untuk memprose
   * Mengonstruksi jaringan Knowledge Graph multi-relasi (Inovasi, Daerah, OPD, Urusan, Bentuk, Jenis, Tahapan, Asta Cipta, dan Profil).
   * Mengekspor hasil riset ke format `GraphML` dan berkas CSV (`knowledge_graph_nodes.csv`, `knowledge_graph_edges.csv`, `kg_source_df.csv`).
 * **Dokumentasi Lengkap**:  
-  👉 Silakan baca panduan lengkap notebook dan analisisnya di [**`Prosada-Final/README.md`**](Prosada-Final/README.md).
+ Silakan baca panduan lengkap notebook dan analisisnya di [**`Prosada-Final/README.md`**](Prosada-Final/README.md).
 
 ---
 
@@ -59,11 +59,11 @@ Folder ini merupakan implementasi perangkat lunak **full-stack web application**
   * **Frontend (React 19 + Vite)**: Menyajikan antarmuka modern yang responsif, visualisasi peta sebaran 38 kab/kota berbasis **Leaflet**, visualisasi statistik **Recharts**, serta penjelajah relasi graf.
   * **Explainable AI (XAI) Chatbot**: Asisten interaktif berbasis LLM (Groq API) yang langsung terhubung ke fakta Knowledge Graph (*Direct KG Context Injection*), menyajikan jawaban faktual lengkap dengan alur penalaran, entitas yang ditelusuri, dan tingkat keyakinan (*grounding*).
 * **Dokumentasi Lengkap**:  
-  👉 Silakan baca panduan instalasi lokal, endpoint API, dan langkah deployment di [**`prosada/README.md`**](prosada/README.md).
+  Silakan baca panduan instalasi lokal, endpoint API, dan langkah deployment di [**`prosada/README.md`**](prosada/README.md).
 
 ---
 
-## 🔄 Alur Hubungan Antarbagian
+## Alur Hubungan Antarbagian
 
 Kedua folder dihubungkan oleh pertukaran artefak data:
 
@@ -86,7 +86,7 @@ Data yang telah dibersihkan dan distrukturkan oleh pipeline di `Prosada-Final/` 
 
 ---
 
-## 💡 Klarifikasi Arsitektur AI (Tanpa RAG)
+## Klarifikasi Arsitektur AI (Tanpa RAG)
 
 Pada fase eksperimen di notebook `Prosada-Final/`, sempat dilakukan pengujian prototipe retrieval aturan yang diistilahkan sebagai *Graph RAG*.
 
@@ -96,11 +96,11 @@ Namun pada **aplikasi web produksi (`prosada/`)**, sistem **TIDAK menggunakan RA
 
 ---
 
-## 🚀 Memulai Cepat
+## Memulai Cepat
 
-* Jika Anda ingin **mempelajari analisis data, notebook, atau metodologi clustering**:
+* Jika ingin **mempelajari analisis data, notebook, atau metodologi clustering**:
   * Masuk ke folder [`Prosada-Final/`](Prosada-Final/) dan buka [`Prosada-Final/README.md`](Prosada-Final/README.md).
-* Jika Anda ingin **menjalankan atau men-deploy aplikasi web dashboard**:
+* Jika ingin **menjalankan atau men-deploy aplikasi web dashboard**:
   * Masuk ke folder [`prosada/`](prosada/) dan buka [`prosada/README.md`](prosada/README.md).
 
 ---
