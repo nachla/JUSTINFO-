@@ -20,7 +20,7 @@ Repository ini terbagi menjadi dua komponen utama:
 flowchart TD
     subgraph DataScience ["1. Pipeline Data Science (Prosada-Final/)"]
         RAW["data_inovasi.xlsx (Data Mentah BRIDA Jatim)"] --> NB["Jupyter Notebooks (Clustering & Feature Eng.)"]
-        NB --> ML["Hierarchical / K-Means Clustering"]
+        NB --> ML["Clustering"]
         ML --> KG["Knowledge Graph Extraction"]
         KG --> EXPORT["Export CSV: nodes, edges, kg_source_df"]
     end
@@ -31,8 +31,7 @@ flowchart TD
         DATA --> RAG["rag_service (Graph RAG Retrieval)"]
         LLM["Groq API (Llama 3 / OpenAI OSS)"] --> AI["ai_service (Direct API + XAI Reasoning)"]
         DS --> FASTAPI["FastAPI App (main.py, routers/)"]
-        RAG --> FASTAPI
-        AI --> FASTAPI
+        GEN AI --> FASTAPI
     end
 
     subgraph FrontendApp ["3. Frontend Dashboard (prosada/frontend/)"]
