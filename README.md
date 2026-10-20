@@ -105,7 +105,7 @@ Namun pada **aplikasi web produksi (`prosada/`)**, sistem **TIDAK menggunakan RA
 
 ---
 
-## 📄 Lisensi & Kredit
+## Lisensi & Kredit
 
 Dikembangkan oleh Tim **JUSTINFO** bekerja sama dengan **BRIDA Provinsi Jawa Timur**.  
 Lisensi di bawah [MIT License](LICENSE).
