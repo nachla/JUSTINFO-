@@ -18,7 +18,7 @@ export default function Sidebar() {
         title="Kembali ke beranda"
         className="flex shrink-0 items-center justify-center rounded-2xl bg-white px-3 py-2 shadow-lg transition hover:bg-slate-100"
       >
-        <img src={justinfoLogo} alt="JATIVA" className="h-9 w-auto object-contain lg:h-14" />
+        <img src={justinfoLogo} alt="JUSTINFO - PROSADA" className="h-9 w-auto object-contain lg:h-14" />
       </Link>
 
       <p className="hidden px-2 text-[11px] tracking-[0.2em] text-[#6f869c] lg:block">NAVIGATION</p>
@@ -28,10 +28,10 @@ export default function Sidebar() {
           <NavLink
             key={to}
             to={to}
-                        className={({ isActive }) =>
+            className={({ isActive }) =>
               `flex items-center gap-2.5 whitespace-nowrap rounded-xl px-3 py-2.5 text-sm font-medium transition ${
                 isActive
-                  ? "bg-gradient-to-r from-[#1a7a6e] to-[#14606b] text-white"
+                  ? "bg-gradient-to-r from-[#1a7a6e] to-[#14606b] text-white shadow-sm"
                   : "text-[#c9d6e2] hover:bg-white/10"
               }`
             }
@@ -42,9 +42,10 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <p className="mt-auto hidden px-2 text-[11px] text-[#6f869c] lg:block">
-        BRIDA Provinsi Jawa Timur
-      </p>
+      <div className="mt-auto hidden px-2 text-[11px] text-[#8fa4b8] lg:block">
+        <p className="font-semibold text-white/90">PROSADA</p>
+        <p className="text-[10px] text-[#718a9f]">BRIDA Provinsi Jawa Timur</p>
+      </div>
     </aside>
   );
 }
