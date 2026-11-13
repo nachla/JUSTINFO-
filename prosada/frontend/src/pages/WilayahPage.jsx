@@ -6,7 +6,12 @@ import useFetch from "../hooks/useFetch";
 import { getWilayah } from "../services/data";
 import { TK_COLOR } from "../lib/format";
 
-const FILTER = ["Semua", "Tinggi", "Sedang", "Rendah"];
+const FILTER_OPTS = [
+  { id: "Semua", label: "Semua Klaster" },
+  { id: "Tinggi", label: "Klaster 1 (Tinggi)" },
+  { id: "Sedang", label: "Klaster 2 (Sedang)" },
+  { id: "Rendah", label: "Klaster 3 (Rendah)" },
+];
 
 function Isi({ data }) {
   const [cari, setCari] = useState("");
@@ -15,7 +20,9 @@ function Isi({ data }) {
   const rows = useMemo(
     () =>
       data.filter(
-        (w) => (filter === "Semua" || w.tk === filter) && w.nama.toLowerCase().includes(cari.toLowerCase())
+        (w) =>
+          (filter === "Semua" || w.tk === filter || (filter === "Tinggi" && w.cluster === 1) || (filter === "Sedang" && w.cluster === 2) || (filter === "Rendah" && w.cluster === 3)) &&
+          w.nama.toLowerCase().includes(cari.toLowerCase())
       ),
     [data, cari, filter]
   );
@@ -26,41 +33,43 @@ function Isi({ data }) {
         <input
           value={cari}
           onChange={(e) => setCari(e.target.value)}
-          placeholder="Cari wilayah…"
+          placeholder="Cari kabupaten / kota…"
           aria-label="Cari wilayah"
-          className="min-w-[150px] flex-1 rounded-xl border border-[#e3ebf3] bg-white px-3 py-2 text-sm"
+          className="min-w-[180px] flex-1 rounded-xl border border-[#e3ebf3] bg-white px-3.5 py-2 text-sm shadow-xs focus:border-[#113d64] focus:outline-none"
         />
-        {FILTER.map((f) => (
+        {FILTER_OPTS.map((f) => (
           <button
-            key={f}
-            onClick={() => setFilter(f)}
-            className={`rounded-xl border px-3 py-1.5 text-sm font-semibold ${
-              filter === f ? "border-[#113d64] bg-[#113d64] text-white" : "border-[#e3ebf3] bg-white"
+            key={f.id}
+            onClick={() => setFilter(f.id)}
+            className={`rounded-xl border px-3 py-1.5 text-sm font-semibold transition ${
+              filter === f.id ? "border-[#113d64] bg-[#113d64] text-white shadow-xs" : "border-[#e3ebf3] bg-white hover:bg-[#f8fafc]"
             }`}
           >
-            {f}
+            {f.label}
           </button>
         ))}
       </div>
 
       <WilayahMap data={rows} max={data?.[0]?.n || 1} />
 
-      <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#6b7c8d]">
-        {Object.entries(TK_COLOR).map(([tk, c]) => (
-          <span key={tk} className="flex items-center gap-1.5">
-            <i className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: c }} />
-            {tk}
-          </span>
-        ))}
-        <span>
-          {rows.length} wilayah ditampilkan. Angka di lingkaran = jumlah inovasi, makin besar lingkaran makin
-          banyak inovasi. Klik lingkaran untuk melihat rata-rata kematangan.
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-[#6b7c8d]">
+        <span className="font-semibold text-[#113d64]">Legenda Klaster:</span>
+        <span className="flex items-center gap-1.5">
+          <i className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: "#0d9488" }} />
+          <b>Klaster 1</b>: Ekosistem Tinggi
+        </span>
+        <span className="flex items-center gap-1.5">
+          <i className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: "#d97706" }} />
+          <b>Klaster 2</b>: Ekosistem Sedang
+        </span>
+        <span className="flex items-center gap-1.5">
+          <i className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: "#e11d48" }} />
+          <b>Klaster 3</b>: Ekosistem Rendah
+        </span>
+        <span className="ml-auto text-[#64748b]">
+        Klik marker wilayah untuk rincian profil ekosistem dan statistik.
         </span>
       </div>
-      <p className="mt-1 text-xs text-[#6b7c8d]">
-        Wilayah dengan 1–3 inovasi skornya mudah bergeser, jadi bacalah dengan hati-hati. Posisi lingkaran adalah
-        titik tengah kab/kota, bukan batas wilayah.
-      </p>
     </>
   );
 }
@@ -71,8 +80,8 @@ export default function WilayahPage() {
     <>
       <PageHeader
         badge="Wilayah"
-        title="Peta inovasi per wilayah"
-        subtitle="Setiap lingkaran adalah satu kab/kota, berisi jumlah inovasinya. Warna mengikuti tingkat kematangan hasil clustering. Klik lingkaran untuk detail."
+        title="Peta Persebaran Klaster Inovasi Wilayah"
+        subtitle="Visualisasi spasial dan komparasi hasil pengelompokan (clustering) 35 kabupaten/kota di Jawa Timur dari 3 model Machine Learning: K-Means (Model Terpilih), K-Medoids (PAM), dan Fuzzy C-Means. Anda dapat mengganti model langsung di peta untuk membandingkan sebaran dan stabilitas klaster."
       />
       <Async state={state}>{(data) => <Isi data={data} />}</Async>
     </>

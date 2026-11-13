@@ -135,15 +135,16 @@ def get_wilayah() -> list:
     inv = load_inovasi()
     w = inv[inv.jenis_wilayah != "Provinsi"].dropna(subset=["daerah"])
     g = (w.groupby("daerah")
-          .agg(n=("node_id", "count"), m=("kematangan", "mean"), tk=("tingkat_kematangan", "first"))
+          .agg(n=("node_id", "count"), m=("kematangan", "mean"), tk=("tingkat_kematangan", "first"), cluster=("cluster", "first"))
           .reset_index().sort_values(["n", "daerah"], ascending=[False, True]))
     koor = load_koordinat()
     hasil = []
     for r in g.itertuples():
         nama = daerah_pendek(r.daerah)
         lat, lng = koor.get(nama, (None, None))
+        cl = int(r.cluster) if hasattr(r, "cluster") and pd.notna(r.cluster) else (1 if r.tk == "Tinggi" else 2 if r.tk == "Sedang" else 3)
         hasil.append({"nama": nama, "n": int(r.n), "m": round(float(r.m), 1), "tk": r.tk,
-                      "lat": lat, "lng": lng})
+                      "cluster": cl, "lat": lat, "lng": lng})
     return hasil
 
 

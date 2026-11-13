@@ -16,6 +16,7 @@ class WilayahItem(BaseModel):
     n: int
     m: float
     tk: str
+    cluster: int | None = None
     lat: float | None = None
     lng: float | None = None
 
